@@ -56,7 +56,7 @@ export class ProductService {
     id: string,
     updateProductDto: UpdateProductDto,
   ): Promise<IProduct> {
-    if (!ProductTypeList.includes(updateProductDto.type)) {
+    if (updateProductDto.type  && !ProductTypeList.includes(updateProductDto.type)) {
       throw createCustomException(
         `The type of product must be ${ProductTypeList}`,
         400,
