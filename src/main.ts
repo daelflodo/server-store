@@ -1,7 +1,7 @@
 import { NestFactory, Reflector } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ConfigService } from '@nestjs/config';
-import { AllExceptionFilter, TimeOutInterceptor } from './common';
+import { AllExceptionFilter, CORS, TimeOutInterceptor } from './common';
 import { ClassSerializerInterceptor, Logger, ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
@@ -23,7 +23,7 @@ async function bootstrap() {
     }),
   );
 
-  // app.enableCors(CORS);
+  app.enableCors(CORS);
 
   app.setGlobalPrefix('api'); // para manejar las versiones
 
