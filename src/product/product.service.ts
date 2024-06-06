@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Product } from './entities/product.entity';
 import { IProduct } from 'src/common/interfaces/product.interface';
-import { ProductTypeList, createCustomException } from 'src/common';
+import { IResponse, ProductTypeList, createCustomException } from 'src/common';
 import { CreateProductDto, PaginationDto, UpdateProductDto } from './dto';
 
 @Injectable()
@@ -56,7 +56,10 @@ export class ProductService {
     id: string,
     updateProductDto: UpdateProductDto,
   ): Promise<IProduct> {
-    if (updateProductDto.type  && !ProductTypeList.includes(updateProductDto.type)) {
+    if (
+      updateProductDto.type &&
+      !ProductTypeList.includes(updateProductDto.type)
+    ) {
       throw createCustomException(
         `The type of product must be ${ProductTypeList}`,
         400,
@@ -68,14 +71,13 @@ export class ProductService {
     return await this.findOne(id);
   }
 
-  async remove(id: string) {
+  async remove(id: string): Promise<IResponse> {
     await this.findOne(id);
 
     await this.productRepository.delete(id);
 
     return {
       message: 'The product was successfully removed',
-      // data: user,
       code: 'OK_PRODUCT_DELETE',
     };
   }
