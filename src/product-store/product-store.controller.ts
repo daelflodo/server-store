@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   ParseUUIDPipe,
+  UseGuards,
 } from '@nestjs/common';
 import {
   ApiOperation,
@@ -18,7 +19,9 @@ import {
 
 import { ProductStoreService } from './product-store.service';
 import { CreateProductStoreDto } from './dto/create-product-store.dto';
+import { AuthGuard } from 'src/auth/guards/auth.guard';
 
+@UseGuards(AuthGuard)
 @ApiTags('Product-Store')
 @Controller('products')
 export class ProductStoreController {
