@@ -1,11 +1,11 @@
-import { IStore } from 'src/common';
-import { BaseEntity } from 'src/config/base.entity';
-import { Product } from 'src/product/entities/product.entity';
 import { Entity, Column, ManyToMany } from 'typeorm';
 
-@Entity({ name: 'stores' })
-export class Store extends BaseEntity implements IStore{
+import { IStore } from '../../common';
+import { BaseEntity } from '../../config/base.entity';
+import { Product } from '../../product/entities/product.entity';
 
+@Entity({ name: 'stores' })
+export class Store extends BaseEntity implements IStore {
   @Column()
   name: string;
 

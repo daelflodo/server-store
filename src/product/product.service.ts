@@ -1,9 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+
 import { Product } from './entities/product.entity';
-import { IProduct } from 'src/common/interfaces/product.interface';
-import { IResponse, ProductTypeList, createCustomException } from 'src/common';
+import { IProduct } from '../common/interfaces/product.interface';
+import { IResponse, ProductTypeList, createCustomException } from '../common';
 import { CreateProductDto, PaginationDto, UpdateProductDto } from './dto';
 
 @Injectable()

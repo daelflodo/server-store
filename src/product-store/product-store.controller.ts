@@ -8,8 +8,6 @@ import {
   Delete,
   ParseUUIDPipe,
 } from '@nestjs/common';
-import { ProductStoreService } from './product-store.service';
-import { CreateProductStoreDto } from './dto/create-product-store.dto';
 import {
   ApiOperation,
   ApiTags,
@@ -17,6 +15,9 @@ import {
   ApiBody,
   ApiResponse,
 } from '@nestjs/swagger';
+
+import { ProductStoreService } from './product-store.service';
+import { CreateProductStoreDto } from './dto/create-product-store.dto';
 
 @ApiTags('Product-Store')
 @Controller('products')
@@ -26,7 +27,10 @@ export class ProductStoreController {
   @ApiOperation({ summary: 'Asociar una tienda a un producto' })
   @ApiParam({ name: 'productId', description: 'UUID del producto' })
   @ApiParam({ name: 'storeId', description: 'UUID de la tienda' })
-  @ApiResponse({ status: 200, description: 'Tienda asociada al producto correctamente' })
+  @ApiResponse({
+    status: 200,
+    description: 'Tienda asociada al producto correctamente',
+  })
   @ApiResponse({ status: 404, description: 'Producto o tienda no encontrados' })
   @Post(':productId/store/:storeId')
   async addStoreToProduct(
@@ -35,16 +39,21 @@ export class ProductStoreController {
   ): Promise<any> {
     return await this.productStoreService.addStoreToProduct(productId, storeId);
   }
-  
+
   @ApiOperation({ summary: 'Obtener las tiendas que tienen un producto' })
   @ApiParam({ name: 'productId', description: 'UUID del producto' })
-  @ApiResponse({ status: 200, description: 'Lista de tiendas devuelta correctamente' })
+  @ApiResponse({
+    status: 200,
+    description: 'Lista de tiendas devuelta correctamente',
+  })
   @ApiResponse({ status: 404, description: 'Producto no encontrado' })
   @Get(':productId/stores')
-  async findStoresFromProduct(@Param('productId', ParseUUIDPipe) productId: string): Promise<any> {
+  async findStoresFromProduct(
+    @Param('productId', ParseUUIDPipe) productId: string,
+  ): Promise<any> {
     return await this.productStoreService.findStoresFromProduct(productId);
   }
-  
+
   @ApiOperation({ summary: 'Obtener una tienda que tiene un producto' })
   @ApiParam({ name: 'productId', description: 'UUID del producto' })
   @ApiParam({ name: 'storeId', description: 'UUID de la tienda' })
@@ -55,13 +64,19 @@ export class ProductStoreController {
     @Param('productId', ParseUUIDPipe) productId: string,
     @Param('storeId', ParseUUIDPipe) storeId: string,
   ): Promise<any> {
-    return await this.productStoreService.findStoreFromProduct(productId, storeId);
+    return await this.productStoreService.findStoreFromProduct(
+      productId,
+      storeId,
+    );
   }
-  
+
   @ApiOperation({ summary: 'Actualizar las tiendas que tienen un producto' })
   @ApiParam({ name: 'productId', description: 'UUID del producto' })
   @ApiBody({ type: CreateProductStoreDto })
-  @ApiResponse({ status: 200, description: 'Tiendas actualizadas correctamente' })
+  @ApiResponse({
+    status: 200,
+    description: 'Tiendas actualizadas correctamente',
+  })
   @ApiResponse({ status: 404, description: 'Producto no encontrado' })
   @Patch(':productId/stores')
   async updateStoresFromProduct(
@@ -73,18 +88,23 @@ export class ProductStoreController {
       createProductStoreDto,
     );
   }
-  
+
   @ApiOperation({ summary: 'Eliminar la tienda que tiene un producto' })
   @ApiParam({ name: 'productId', description: 'UUID del producto' })
   @ApiParam({ name: 'storeId', description: 'UUID de la tienda' })
-  @ApiResponse({ status: 200, description: 'Tienda eliminada del producto correctamente' })
+  @ApiResponse({
+    status: 200,
+    description: 'Tienda eliminada del producto correctamente',
+  })
   @ApiResponse({ status: 404, description: 'Producto o tienda no encontrados' })
   @Delete(':productId/stores/:storeId')
   async deleteStoreFromProduct(
     @Param('productId', ParseUUIDPipe) productId: string,
     @Param('storeId', ParseUUIDPipe) storeId: string,
   ): Promise<any> {
-    return await this.productStoreService.deleteStoreFromProduct(productId, storeId);
+    return await this.productStoreService.deleteStoreFromProduct(
+      productId,
+      storeId,
+    );
   }
 }
-

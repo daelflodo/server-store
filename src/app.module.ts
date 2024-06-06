@@ -22,7 +22,7 @@ import { ProductStoreModule } from './product-store/product-store.module';
         DB_NAME: joi.string().required(),
       }),
     }),
-    TypeOrmModule.forRoot({...dataSourceConfig }),
+    TypeOrmModule.forRoot({ ...dataSourceConfig }),
     ProductModule,
     StoresModule,
     ProductStoreModule,

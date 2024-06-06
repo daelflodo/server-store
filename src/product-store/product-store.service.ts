@@ -1,9 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Product } from 'src/product/entities/product.entity';
 import { In, Repository } from 'typeorm';
-import { Store } from 'src/stores/entities/store.entity';
-import { createCustomException } from 'src/common';
+
+import { Product } from '../product/entities/product.entity';
+import { Store } from '../stores/entities/store.entity';
+import { createCustomException } from '../common';
 import { CreateProductStoreDto } from './dto/create-product-store.dto';
 
 @Injectable()
@@ -25,10 +26,16 @@ export class ProductStoreService {
     });
 
     if (!product || !store) {
-      throw createCustomException('Product or Store not found', 404, 'Product-store');
+      throw createCustomException(
+        'Product or Store not found',
+        404,
+        'Product-store',
+      );
     }
 
-    const storeAlreadyAdded = product.stores.some((storedStore) => storedStore.id === storeId);
+    const storeAlreadyAdded = product.stores.some(
+      (storedStore) => storedStore.id === storeId,
+    );
     if (storeAlreadyAdded) {
       return product;
     }
@@ -63,13 +70,20 @@ export class ProductStoreService {
 
     const store = product.stores.find((store) => store.id === storeId);
     if (!store) {
-      throw createCustomException('Store not found for this product', 404, 'Product-store');
+      throw createCustomException(
+        'Store not found for this product',
+        404,
+        'Product-store',
+      );
     }
 
     return store;
   }
 
-  async updateStoresFromProduct(productId: string, createProductStoreDto: CreateProductStoreDto) {
+  async updateStoresFromProduct(
+    productId: string,
+    createProductStoreDto: CreateProductStoreDto,
+  ) {
     const { storeIds } = createProductStoreDto;
 
     const product = await this.productRepository.findOne({
@@ -86,7 +100,11 @@ export class ProductStoreService {
     });
 
     if (stores.length !== storeIds.length) {
-      throw createCustomException('One or more stores not found', 404, 'Product-store');
+      throw createCustomException(
+        'One or more stores not found',
+        404,
+        'Product-store',
+      );
     }
 
     product.stores = stores;
@@ -105,9 +123,15 @@ export class ProductStoreService {
       throw createCustomException('Product not found', 404, 'Product-store');
     }
 
-    const storeIndex = product.stores.findIndex((store) => store.id === storeId);
+    const storeIndex = product.stores.findIndex(
+      (store) => store.id === storeId,
+    );
     if (storeIndex === -1) {
-      throw createCustomException('Store not found for this product', 404, 'Product-store');
+      throw createCustomException(
+        'Store not found for this product',
+        404,
+        'Product-store',
+      );
     }
 
     product.stores.splice(storeIndex, 1);
@@ -124,8 +148,6 @@ export class ProductStoreService {
 // import { Store } from 'src/stores/entities/store.entity';
 // import { createCustomException } from 'src/common';
 // import { CreateProductStoreDto } from './dto/create-product-store.dto';
-
-
 
 // @Injectable()
 // export class ProductStoreService {

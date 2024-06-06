@@ -8,8 +8,8 @@ import {
   IsString,
   IsUrl,
 } from 'class-validator';
-import { url } from 'inspector';
-import { ProductType, ProductTypeList } from 'src/common';
+
+import { ProductType, ProductTypeList } from '../../common';
 
 export class CreateProductDto {
   @ApiProperty({

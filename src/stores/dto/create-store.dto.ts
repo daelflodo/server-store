@@ -3,16 +3,16 @@ import { IsNotEmpty, IsString, Length, Matches } from 'class-validator';
 
 export class CreateStoreDto {
   @ApiProperty({
-    description:'Nombre de la tienda',
-    example:'Plaza Mall'
+    description: 'Nombre de la tienda',
+    example: 'Plaza Mall',
   })
   @IsNotEmpty()
   @IsString()
   name: string;
 
   @ApiProperty({
-    description:'la ciudad de la tienda sea un codigo de tres caracteres',
-    example: 'BOG'
+    description: 'la ciudad de la tienda sea un codigo de tres caracteres',
+    example: 'BOG',
   })
   @IsNotEmpty()
   @IsString()
@@ -22,7 +22,7 @@ export class CreateStoreDto {
 
   @ApiProperty({
     description: 'Direcion de la tienda',
-    example: 'Calle 72 #10-34, Chapinero'
+    example: 'Calle 72 #10-34, Chapinero',
   })
   @IsNotEmpty()
   @IsString()

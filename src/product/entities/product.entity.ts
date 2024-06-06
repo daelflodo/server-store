@@ -1,8 +1,8 @@
-import { ProductType } from 'src/common';
+import { ProductType } from '../../common';
 import { IProduct } from '../../common/interfaces/product.interface';
 import { BaseEntity } from '../../config/base.entity';
 import { Column, Entity, JoinTable, ManyToMany } from 'typeorm';
-import { Store } from 'src/stores/entities/store.entity';
+import { Store } from '../../stores/entities/store.entity';
 
 @Entity({ name: 'products' })
 export class Product extends BaseEntity implements IProduct {

@@ -1,6 +1,6 @@
 import { HttpException } from '@nestjs/common';
 
-import { statusCodes } from 'src/utils/statusCodesLibreary';
+import { statusCodes } from '../../utils/statusCodesLibreary';
 
 export function createCustomException(
   message: string,
