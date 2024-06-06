@@ -7,6 +7,7 @@ import { ProductModule } from './product/product.module';
 import { dataSourceConfig } from './config/data.source';
 import { StoresModule } from './stores/stores.module';
 import { ProductStoreModule } from './product-store/product-store.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { ProductStoreModule } from './product-store/product-store.module';
     ProductModule,
     StoresModule,
     ProductStoreModule,
+    UserModule,
   ],
   controllers: [],
   providers: [],
