@@ -7,3 +7,5 @@ export * from './interfaces/store.interface'
 export * from './interfaces/response.interface'
 export * from './interfaces/user.interface'
 export { CORS } from './constants/cors';
+export * from './constants/key-decorators'
+export * from './interfaces/auth.interface'

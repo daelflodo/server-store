@@ -8,6 +8,7 @@ import {
   Delete,
   Query,
   ParseUUIDPipe,
+  UseGuards,
 } from '@nestjs/common';
 import {
   ApiBadRequestResponse,
@@ -21,7 +22,9 @@ import {
 
 import { CreateProductDto, PaginationDto, UpdateProductDto } from './dto';
 import { ProductService } from './product.service';
-
+import { AuthGuard } from 'src/auth/guards/auth.guard';
+import { PublicAccess } from 'src/auth/decorators/public.decorator';
+@UseGuards(AuthGuard)
 @ApiTags('Products')
 @Controller('products')
 export class ProductController {
@@ -39,6 +42,7 @@ export class ProductController {
     return this.productService.create(createProductDto);
   }
 
+  @PublicAccess()
   @ApiOperation({ summary: 'Obtener todos los productos con paginación' })
   @ApiOkResponse({ description: 'Productos obtenidos exitosamente' })
   @ApiQuery({

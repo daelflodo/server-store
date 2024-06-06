@@ -8,6 +8,7 @@ import { dataSourceConfig } from './config/data.source';
 import { StoresModule } from './stores/stores.module';
 import { ProductStoreModule } from './product-store/product-store.module';
 import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { UserModule } from './user/user.module';
     StoresModule,
     ProductStoreModule,
     UserModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
