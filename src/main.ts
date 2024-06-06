@@ -16,12 +16,12 @@ async function bootstrap() {
   app.useGlobalInterceptors(new TimeOutInterceptor());
   app.useGlobalInterceptors(new ClassSerializerInterceptor(reflector)); // Excluye la password de las solicitudes
   
-  // app.useGlobalPipes(
-  //   new ValidationPipe({
-  //     whitelist: true,
-  //     forbidNonWhitelisted: true,
-  //   }),
-  // );
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      forbidNonWhitelisted: true,
+    }),
+  );
 
   app.enableCors(CORS);
 

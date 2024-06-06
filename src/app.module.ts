@@ -6,6 +6,7 @@ import * as joi from 'joi';
 import { ProductModule } from './product/product.module';
 import { dataSourceConfig } from './config/data.source';
 import { StoresModule } from './stores/stores.module';
+import { ProductStoreModule } from './product-store/product-store.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { StoresModule } from './stores/stores.module';
     TypeOrmModule.forRoot({...dataSourceConfig }),
     ProductModule,
     StoresModule,
+    ProductStoreModule,
   ],
   controllers: [],
   providers: [],
