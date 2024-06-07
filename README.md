@@ -7,6 +7,8 @@
 ```bash
 $ npm install
 ```
+## Deploy
+https://server-store-sob3.onrender.com
 ## Agregar variables de entorno .env
     PORT=8080
 
@@ -22,9 +24,18 @@ $ npm install
     JWT_SECRET=mysecret
     JWT_EXPIRE=7d
 
+## Endpoint
+accede para tener todos los productos con paginacion y la metadata del paginado
+https://server-store-sob3.onrender.com/api/product/all?page=1&limit=3
+
+![alt text](image-6.png)
+
+
 ## Documentacion Swagger
 ### inicia el servidor en el puerto 8080
 http://localhost:8080/api/docs
+### o puedes acceder a través del enlace 
+https://server-store-sob3.onrender.com/api/docs
 ![alt text](image-1.png)
 para ingresar necesita registrarte 
 ![alt text](image-2.png)
