@@ -1,15 +1,78 @@
 
-## Description
-Prueba BackEnd Developer Node Nest
+## Prueba BackEnd Developer Node Nest
 
-## Installation
+
+## Instalación
 
 ```bash
 $ npm install
 ```
-## Add environment variables
+## Agregar variables de entorno .env
+    PORT=8080
 
-## Running the app
+    #DATABASE
+    DB_HOST=localhost
+    DB_PORT=5432
+    DB_USERNAME=postgres
+    DB_PASSWORD=1489
+    DB_NAME=productdb
+
+    #JWT
+    HASH_SALT=10
+    JWT_SECRET=mysecret
+    JWT_EXPIRE=7d
+
+## Documentacion Swagger
+### inicia el servidor en el puerto 8080
+http://localhost:8080/api/docs
+![alt text](image-1.png)
+para ingresar necesita registrarte 
+![alt text](image-2.png)
+Luego iniciamos sesion con el usuario creado
+![alt text](image-3.png)
+Copiamos el token y lo ingresamos\
+![alt text](image-4.png)\
+autorizamos
+![alt text](image-5.png)
+y listo tenemos accesos a los endpoint 
+
+
+## Excepciones
+### Manejos de ``exepciones`` personalizadas
+### Request CustomException
+````
+import { createCustomException } from 'src/common/exceptions/exceptionsGenerator';
+
+if (userFound) {
+      throw createCustomException(
+        'El mensage para mostrar',
+        409,
+        'User',
+      );
+    }
+````
+### Response CustomException
+````
+{
+    "timesstamps": "2024-04-21T18:43:38.308Z",
+    "path": "/api/user",
+    "error": {
+        "message": "El mensage para mostrar",
+        "error": "ERROR_USER_CONFLICTC",
+        "statusCode": 409
+    }
+}
+````
+## Ejemplos de optimizacion de los endpoint
+````
+[POST]--> api/controller/create
+[GET]--> api/controller/all
+[GET]--> api/controller/:id
+[UPDATE]--> api/controller/edit/:id
+[PATCH]--> api/controller/edit/:id
+[DELETE]--> api/controller/delete/:id
+````
+## Ejecutando la aplicación
 
 ```bash
 # development
@@ -28,23 +91,23 @@ $ npm run start:prod
 # unit tests
 $ npm run test
 
-# e2e tests
-$ npm run test:e2e
+# tests product-store
+$ npm run test product-store.controller
+$ npm run test product-store.service
+$ npm run test create-product-store.dto
 
-# test coverage
-$ npm run test:cov
+# test store
+$ npm run test stores.controller
+$ npm run test stores.service
+
+#test product
+$ npm run test product.controller
+$ npm run test product.service
+$ npm run test create-product.dto
+$ npm run test pagination.dto
 ```
 
-## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## Soporte
+- Author - [David Flores](https://github.com/daelflodo)
 
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).

@@ -15,6 +15,7 @@ import {
   ApiParam,
   ApiBody,
   ApiResponse,
+  ApiBearerAuth,
 } from '@nestjs/swagger';
 
 import { ProductStoreService } from './product-store.service';
@@ -23,6 +24,7 @@ import { AuthGuard } from '../auth/guards/auth.guard';
 
 @UseGuards(AuthGuard)
 @ApiTags('Product-Store')
+@ApiBearerAuth()
 @Controller('products')
 export class ProductStoreController {
   constructor(private readonly productStoreService: ProductStoreService) {}

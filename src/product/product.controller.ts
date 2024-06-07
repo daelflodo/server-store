@@ -12,6 +12,7 @@ import {
 } from '@nestjs/common';
 import {
   ApiBadRequestResponse,
+  ApiBearerAuth,
   ApiCreatedResponse,
   ApiOkResponse,
   ApiOperation,
@@ -26,6 +27,7 @@ import { AuthGuard } from '../auth/guards/auth.guard';
 import { PublicAccess } from '../auth/decorators/public.decorator';
 @UseGuards(AuthGuard)
 @ApiTags('Products')
+@ApiBearerAuth()
 @Controller('products')
 export class ProductController {
   constructor(private readonly productService: ProductService) {}

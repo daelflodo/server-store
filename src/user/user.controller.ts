@@ -16,6 +16,7 @@ import {
   ApiParam,
   ApiBody,
   ApiNotFoundResponse,
+  ApiBearerAuth,
 } from '@nestjs/swagger';
 
 import { UserService } from './user.service';
@@ -25,6 +26,7 @@ import { AuthGuard } from '../auth/guards/auth.guard';
 import { PublicAccess } from 'src/auth/decorators/public.decorator';
 
 @ApiTags('Users')
+@ApiBearerAuth()
 @Controller('user')
 @UseGuards(AuthGuard)
 export class UserController {

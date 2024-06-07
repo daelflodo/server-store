@@ -1,0 +1,950 @@
+{
+	"info": {
+		"_postman_id": "85c7524c-95af-4513-ad90-8b7302e10d50",
+		"name": "Products-Store",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "28467144",
+		"_collection_link": "https://grey-resonance-102436.postman.co/workspace/API-Microservicios~7aa6fc4a-44b5-4009-825d-184237f306c8/collection/28467144-85c7524c-95af-4513-ad90-8b7302e10d50?action=share&source=collection_link&creator=28467144"
+	},
+	"item": [
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Create Valid Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Mouse\",\r\n    \"price\": 15,\r\n    \"type\": \"No-perecedero\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{HOST}}/api/products/create"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Invalid Product (error)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Mouse\",\r\n    \"price\": 15,\r\n    \"type\": \"Aqui debe ir Perecedero o No-perecedero\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{HOST}}/api/products/create"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/api/products/all?page=1&limit=3",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"all"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One Product By ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/api/products/:id",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "20e4f921-3d88-41bd-9879-86f25a5742ce"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Defina 3 colecciones donde implemente las siguientes pruebas de postman para las entidades y para la asociación",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/api/products/:id",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "48"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update One Product By ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Laptop Dell\",\r\n    \"price\": 700,\r\n    \"type\":\"Perecedero\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/products/edit/:id",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"edit",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "20e4f921-3d88-41bd-9879-86f25a5742ce"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update One Product By Invalid  ID (error)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Laptop Dell\",\r\n    \"price\": 700,\r\n    \"type\":\"Perecedero\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/products/edit/:id",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"edit",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "48"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete One Product By ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/api/products/delete/:id",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"delete",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "fcb697cb-ec72-4f92-9fcd-384177a85241"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete One Product By Invalid  ID (error)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/api/products/delete/:id",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"delete",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "48"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Aqui se podra crear, obtener, actualizar y eliminar usuarios"
+		},
+		{
+			"name": "Store",
+			"item": [
+				{
+					"name": "Create Valid Store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Tienda Agapito\",\r\n    \"city\": \"MED\",\r\n    \"address\":\"Calle 22 A\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{HOST}}/api/stores/create"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Invalid Store (error)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Tienda Agapito\",\r\n    \"city\": \"medellin\",\r\n    \"address\":\"Calle 22 A\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{HOST}}/api/stores/create"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{HOST}}/api/stores/all"
+					},
+					"response": []
+				},
+				{
+					"name": "Get One Store By ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/api/stores/:id",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"stores",
+								":id"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "hp",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "c55c12eb-db7a-45cb-aaab-84b577149ca3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One Store By Invalid ID (error)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/api/stores/:id",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"stores",
+								":id"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "hp",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "48"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update One Store By ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"city\":\"BO\",\r\n    \"name\":\"Agapito 2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/stores/edit/:id",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"stores",
+								"edit",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "c55c12eb-db7a-45cb-aaab-84b577149ca3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update One Store By Invalid ID (error)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"city\":\"BOG\",\r\n    \"name\":\"Agapito 2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/stores/edit/:id",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"stores",
+								"edit",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "48"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Aqui se podra crear, obtener, actualizar y eliminar usuarios"
+		},
+		{
+			"name": "Product-Store",
+			"item": [
+				{
+					"name": "Add Store To Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Tienda Agapito\",\r\n    \"city\": \"med\",\r\n    \"address\":\"Calle 22 A\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/products/:productId/store/:storeId'",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"products",
+								":productId",
+								"store",
+								":storeId'"
+							],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "20e4f921-3d88-41bd-9879-86f25a5742ce"
+								},
+								{
+									"key": "storeId'",
+									"value": "98a81ccd-42d7-468d-a1b5-68ffe13f0bdc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Store Invalid To Product (error)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Tienda Agapito\",\r\n    \"city\": \"med\",\r\n    \"address\":\"Calle 22 A\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/products/:productId/store/:storeId'",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"products",
+								":productId",
+								"store",
+								":storeId'"
+							],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "20e4f921-3d88-41bd-9879-86f25a5742ce"
+								},
+								{
+									"key": "storeId'",
+									"value": "98a81ccd-42d7-468d-a1b5-68ffe13f6bdc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find All Stores From Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/api/products/:productId/stores",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"products",
+								":productId",
+								"stores"
+							],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "20e4f921-3d88-41bd-9879-86f25a5742ce"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find One Store From Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/api/products/:productId/stores/:storeId'",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"products",
+								":productId",
+								"stores",
+								":storeId'"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "hp",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "20e4f921-3d88-41bd-9879-86f25a5742ce"
+								},
+								{
+									"key": "storeId'",
+									"value": "a7f1f9d9-54d0-4578-891c-0a88b4f8425d"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find One Store From Invalid Product (error)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/api/products/:productId/stores/:storeId'",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"products",
+								":productId",
+								"stores",
+								":storeId'"
+							],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "20e4f921-3d88-41bd-9879-86f25a5743ce"
+								},
+								{
+									"key": "storeId'",
+									"value": "a7f1f9d9-54d0-4578-891c-0a88b4f8425d"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Stores From Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"storeIds\": [\r\n        \"a7f1f9d9-54d0-4578-891c-0a88b4f8425d\",\r\n        \"98a81ccd-42d7-468d-a1b5-68ffe13f0bdc\",\r\n        \"9fa05ecb-ae07-41b1-ade7-166d0241f021\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/products/:productId/stores",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"products",
+								":productId",
+								"stores"
+							],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "20e4f921-3d88-41bd-9879-86f25a5742ce"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Stores From Product (Invalid Store)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"storeIds\": [\r\n        \"a7f1f9d9-54d0-4578-891c-0a88b4f8425d\",\r\n        \"98a81ccd-42d7-468d-a1b5-68ffe13f0bdc\",\r\n        \"9fa05ecb-ae07-41b1-ade7-166d0241f022\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/products/:productId/stores",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"products",
+								":productId",
+								"stores"
+							],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "20e4f921-3d88-41bd-9879-86f25a5742ce"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Store From Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"city\":\"BOG1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/products/:productId/stores/:storeId",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"products",
+								":productId",
+								"stores",
+								":storeId"
+							],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "20e4f921-3d88-41bd-9879-86f25a5742ce"
+								},
+								{
+									"key": "storeId",
+									"value": "9fa05ecb-ae07-41b1-ade7-166d0241f021"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Store without product (error)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"city\":\"BOG1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/products/:productId/stores/:storeId",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"products",
+								":productId",
+								"stores",
+								":storeId"
+							],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "20e4f921-3d88-41bd-9879-86f25a5742ce"
+								},
+								{
+									"key": "storeId",
+									"value": "772d403f-d2ea-4f37-82c4-d42fb5598fd1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Aqui se podra crear, obtener, actualizar y eliminar Product-Store"
+		}
+	]
+}
