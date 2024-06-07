@@ -5,8 +5,8 @@ import { ProductStoreService } from './product-store.service';
 import { ProductStoreController } from './product-store.controller';
 import { Product } from '../product/entities/product.entity';
 import { Store } from '../stores/entities/store.entity';
-import { User } from 'src/user/entities/user.entity';
-import { UserService } from 'src/user/user.service';
+import { User } from '../user/entities/user.entity';
+import { UserService } from '../user/user.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Product, Store, User])],

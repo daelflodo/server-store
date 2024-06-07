@@ -22,8 +22,8 @@ import {
 
 import { CreateProductDto, PaginationDto, UpdateProductDto } from './dto';
 import { ProductService } from './product.service';
-import { AuthGuard } from 'src/auth/guards/auth.guard';
-import { PublicAccess } from 'src/auth/decorators/public.decorator';
+import { AuthGuard } from '../auth/guards/auth.guard';
+import { PublicAccess } from '../auth/decorators/public.decorator';
 @UseGuards(AuthGuard)
 @ApiTags('Products')
 @Controller('products')

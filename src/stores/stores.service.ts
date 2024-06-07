@@ -44,9 +44,10 @@ export class StoresService {
         'Store',
       );
     }
-    await this.findOne(id);
+    const existingStore = await this.findOne(id);
+    const updatedStore = { ...existingStore, ...updateStoreDto };
     await this.storeRepository.update(id, updateStoreDto);
-    return await this.findOne(id);
+    return updatedStore;
   }
 
   async remove(id: string): Promise<IResponse> {

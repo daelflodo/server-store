@@ -48,7 +48,6 @@ export class AuthGuard implements CanActivate {
     const { sub } = manageToken;
 
     const user = await this.userService.findOne(sub);
-    console.log("USER",user);
     
     if (!user) {
       throw createCustomException('Invalid user', 401, 'Auth');

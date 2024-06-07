@@ -42,12 +42,10 @@ export class ProductService {
   }
 
   async findOne(id: string) {
-    console.log(id);
 
     const product = await this.productRepository.findOne({
       where: { id },
     });
-    console.log(product);
 
     if (!product) createCustomException('Product not Found', 404, 'Product');
     return product;
