@@ -14,6 +14,9 @@ export const dataSourceConfig: DataSourceOptions = {
   database: configService.get('DB_NAME'),
   entities: [__dirname + '/../**/**/*.entity{.ts,.js}'],
   synchronize: true,
+  ssl: {
+    rejectUnauthorized: false, // Deshabilitar la verificación del certificado (autoasignado)
+  },
   migrationsRun: false,
   logging: false,
   namingStrategy: new SnakeNamingStrategy(),
