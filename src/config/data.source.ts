@@ -15,7 +15,7 @@ export const dataSourceConfig: DataSourceOptions = {
   entities: [__dirname + '/../**/**/*.entity{.ts,.js}'],
   synchronize: true,
   ssl: {
-    rejectUnauthorized: false, // Deshabilitar la verificación del certificado (autoasignado)
+    rejectUnauthorized: true, // Deshabilitar la verificación del certificado (autoasignado)
   },
   migrationsRun: false,
   logging: false,
